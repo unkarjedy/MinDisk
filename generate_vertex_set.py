@@ -9,9 +9,9 @@ def generate_vertex_set(radius = 10, n = 1024):
     R = np.random.uniform(0, radius, n)
     points = []
     for id in range(n):
-        points.append(Vec2(long(math.floor(R[id] * math.cos(A[id]))),
+        points.append((long(math.floor(R[id] * math.cos(A[id]))),
                  long(math.floor(R[id] * math.sin(A[id])))))
-        points[id].index = id
+        # points[id].index = id
 
     return points
 

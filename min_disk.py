@@ -16,11 +16,15 @@ def build_min_disk(points):
 
 # returns indices of mindisk points
 def min_disk(points):
-    points_len = len(points)
+    points_vec2 = points
+    if not isinstance(points[0], Vec2):
+        points_vec2 = Vec2.from_tuple_array(points)
+
+    points_len = len(points_vec2)
     if points_len < 2:
         return None
     else:
-        return min_disk_recursive(points[:])
+        return min_disk_recursive(points_vec2[:])
 
 
 # params:
@@ -73,7 +77,7 @@ def getD_DX_DY(p1, p2, p3):
 
     DY = square2(p1copy, p2copy, p3copy)
 
-    return long(D), long(DX), long(DY)
+    return D, DX, DY
 
 
 # return center and radius of disk by its (2-3) points
@@ -86,7 +90,7 @@ def build_disk_from_points(points):
     p2 = points[1]
 
     if disk_points_len == 2:
-        center = (p2 + p1) / 2
+        center = (p2 + p1) / 2.0
         return Disk(center, (p2 - center).norm())
 
     p3 = points[2]

@@ -35,6 +35,18 @@ class Vec2:
         return str(self.index)
     index = 0
 
+    @classmethod
+    def from_tuple_array(cls, points):
+        points_vec2 = []
+
+        for i in range(len(points)):
+            points_vec2.append(Vec2(points[i][0], points[i][1]))
+            points_vec2[i].index = i
+
+        return points_vec2
+
+
+
 def dot(v1, v2):
     return v1.x * v2.x + v1.y * v2.y
 

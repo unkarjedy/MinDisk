@@ -15,7 +15,6 @@ def main():
         radius = 10
         n = 30
         points = gvs.generate_vertex_set(radius, n)
-        points_array = vec.to_simple_array(points)
 
         disk, disk_points_indices = md.build_min_disk(points)
         print(disk_points_indices)
@@ -24,7 +23,7 @@ def main():
 
         plt.prepare_axis(radius)
 
-        plt.draw_points(points_array, enumerate = True)
+        plt.draw_points(points, enumerate = True)
         plt.draw_disk((disk.center.x, disk.center.y, disk.radius))
 
         plt.draw()
